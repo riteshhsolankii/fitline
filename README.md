@@ -51,11 +51,16 @@ Open [http://localhost:3000](http://localhost:3000). `GET /api/health` reports w
 ```
 prisma/schema.prisma      Database schema
 prisma7.config.ts         Prisma CLI config (loads .env)
-src/app/                  Routes, layouts, global styles
+src/app/                  Root layout, global styles, `/` → `/dashboard` redirect
+src/app/(app)/            App shell (sidebar + header) and one folder per section
+src/components/layout/    App sidebar, header, and page placeholder
 src/components/ui/        shadcn/ui components (add more with `npx shadcn@latest add <name>`)
+src/config/navigation.ts  Sidebar items: title, route, icon, description
 src/lib/prisma.ts         Shared Prisma client (server-only)
 src/generated/prisma/     Generated Prisma client (git-ignored)
 ```
+
+To add a section, add an entry to `src/config/navigation.ts` and create `src/app/(app)/<route>/page.tsx`.
 
 ## Theme
 
